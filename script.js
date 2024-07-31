@@ -7,6 +7,11 @@ function openPrivacyNotice() {
     // Open a new window
     const privacyWindow = window.open("", "Privacy Notice", "width=800,height=600");
 
+    if (!privacyWindow) {
+        alert("Failed to open new window. Please check your popup blocker settings.");
+        return;
+    }
+
     // Write the necessary HTML to the new window
     privacyWindow.document.write(`
         <!DOCTYPE html>
