@@ -1,19 +1,19 @@
 document.getElementById('cookies-notice-link').addEventListener('click', function(event) {
     event.preventDefault(); // Prevent the default link behavior
-    openPrivacyNotice();
+    openCookiesNotice();
 });
 
-function openPrivacyNotice() {
+function openCookiesNotice() {
     // Open a new window
-    const privacyWindow = window.open("", "Cookies Notice", "width=800,height=600");
+    const cookiesWindow = window.open("", "Cookies Notice", "width=800,height=600");
 
-    if (!privacyWindow) {
+    if (!cookiesWindow) {
         alert("Failed to open new window. Please check your popup blocker settings.");
         return;
     }
 
     // Write the necessary HTML to the new window
-    privacyWindow.document.write(`
+    cookiesWindow.document.write(`
         <!DOCTYPE html>
         <html lang="en">
         <head>
