@@ -4,15 +4,15 @@ document.getElementById('cookies-notice-link').addEventListener('click', functio
 });
 
 function openPrivacyNotice() {
-    // Open a new window
-    const privacyWindow = window.open("", "Privacy Notice", "width=800,height=600");
+    // Open a new tab
+    const privacyWindow = window.open("", "_blank");
 
     if (!privacyWindow) {
-        alert("Failed to open new window. Please check your popup blocker settings.");
+        alert("Failed to open a new tab. Please check your popup blocker settings.");
         return;
     }
 
-    // Write the necessary HTML to the new window
+    // Write the necessary HTML to the new tab
     privacyWindow.document.write(`
         <!DOCTYPE html>
         <html lang="en">
