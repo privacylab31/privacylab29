@@ -26,7 +26,7 @@ function openPrivacyNotice() {
             </style>
         </head>
         <body>
- <!-- OneTrust Cookies Notice start -->
+<!-- OneTrust Cookies Notice start -->
   <!-- Language Drop-down element that will control in which language the Privacy Notice is displayed -->
   <div class="ot-privacy-notice-language-dropdown-container"></div>
   <!-- Container in which the Privacy Notice will be rendered -->
@@ -43,7 +43,7 @@ function openPrivacyNotice() {
       });
     </script>
 
-  <!-- OneTrust Cookies Notice end -->
+  <!-- OneTrust cookies Notice end -->
         </body>
         </html>
     `);
