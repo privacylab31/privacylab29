@@ -57,12 +57,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="ot-sdk-cookie-policy"></div>
 <!-- OneTrust Cookies List end -->
     <footer>
-        <p>&copy; 2024 Privacy Lab</p>
-        <a href="#" id="privacy-notice-link">Privacy Notice</a>
-        <!-- OneTrust Cookies Settings button start -->
-<button id="ot-sdk-btn" class="ot-sdk-show-settings">Cookie Settings</button>
-<!-- OneTrust Cookies Settings button end -->
+        <div>
+            <p>&copy; 2024 Privacy Lab30</p>
+            <a href="#" id="cookies-notice-link" class="ot-sdk-show-settings">Cookies Policy</a> 
+            <a href="#" id="privacy-notice-link">Privacy Policy</a>
+            <!-- Button to Manage Cookies Preferences -->
+            <p>
+                <button id="manage-cookies-btn" class="ot-sdk-show-settings" style="margin-top: 10px;">Manage Cookies Preferences</button>
+            </p>
+        </div>
     </footer>
-    <script src="script.js"></script>
+
+    <!-- Including OneTrust Script -->
+    <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="01910774-292a-731f-9870-e4edf891f6bb"></script>
+
+    <!-- Initialize OneTrust -->
+    <script type="text/javascript">
+        function OptanonWrapper() { }
+    </script>
+
+    <!-- Including the additional JavaScript files -->
+    <script src="script.js"></script>    
+    <script src="scriptcookies.js"></script>
 </body>
 </html>
