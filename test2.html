@@ -1,40 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Users</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sample Webpage</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file (optional) -->
+    <script src="script.js" defer></script> <!-- Link to external JS file (optional) -->
 </head>
+
 <body>
- 
-    <!-- Navigation Bar -->
-<nav>
-<ul>
-<!-- Link back to Dashboard -->
-<li><a href="dashboard.html">Dashboard</a></li>
-<li><a href="settings.html">Settings</a></li>
-</ul>
-</nav>
- 
-    <!-- Main content for Users Page -->
-<div class="users-content">
-<h1>Users</h1>
-<p>This page displays user-related information.</p>
- 
-        <!-- Sample User List (could be dynamically loaded) -->
-<ul id="userList">
-<li>User 1</li>
-<li>User 2</li>
-<li>User 3</li>
-</ul>
-</div>
- 
-    <!-- Footer Section -->
-<footer>
-<p>&copy; 2024 Privacy Lab29</p>
-</footer>
- 
-    <script src="script.js"></script> <!-- JavaScript File for Users Page -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h1>Welcome to Our Website</h1>
+            <p>This is a basic webpage template.</p>
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>We are a company that provides high-quality web development services.</p>
+        </section>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Web Design</li>
+                <li>Web Development</li>
+                <li>SEO Optimization</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>You can reach us at <a href="mailto:contact@example.com">contact@example.com</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Company Name. All rights reserved.</p>
+    </footer>
 </body>
+
 </html>
