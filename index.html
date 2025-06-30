@@ -13,21 +13,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4239JJN');</script>
 <!-- End Google Tag Manager -->
-<script type="text/plain" class="ot-sdk-class" data-category="C0004">
-  (function() {
-    const name = "targeting_id";
-    const value = "usr_47392_abx78"; // example targeting ID
-    const days = 30;
-
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // 30 days
-    const expires = "expires=" + date.toUTCString();
-
-    document.cookie = `${name}=${value}; ${expires}; path=/; Secure; SameSite=Lax`;
-
-    console.log("✅ Targeting cookie set:", `${name}=${value}`);
-  })();
-</script>
+   <!-- Your targeting cookie (no Secure flag for local) -->
+    <script type="text/plain" class="ot-sdk-class" data-category="C0004">
+      (function () {
+        const name = "targeting_id";
+        const value = "usr_47392_abx78";
+        const days = 30;
+        const d = new Date();
+        d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+        const expires = "expires=" + d.toUTCString();
+        document.cookie = `${name}=${value}; ${expires}; path=/; SameSite=Lax`;
+        console.log("✅ Targeting cookie set:", `${name}=${value}`);
+      })();
+    </script>
 
 
  </head>
