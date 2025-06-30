@@ -13,6 +13,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4239JJN');</script>
 <!-- End Google Tag Manager -->
+// Set a targeting cookie (e.g., for ad personalization)
+function setTargetingCookie() {
+  const name = "targeting_id";
+  const value = "ad_user_98765"; // or dynamically generate
+  const days = 30;
+
+  const date = new Date();
+  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // 30 days
+  const expires = "expires=" + date.toUTCString();
+
+  document.cookie = `${name}=${value}; ${expires}; path=/; Secure; SameSite=Lax`;
+}
+
+// Call this function after user gives consent (if required)
+setTargetingCookie();
+
  </head>
 <body>
      <!-- Dashboard Navigation -->
