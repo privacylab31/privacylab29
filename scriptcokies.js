@@ -11,7 +11,7 @@ function openPrivacyNotice() {
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Privacy Notice</title>
+            <title>Privacy Notice123</title>
             <style>
                 body { font-family: Arial, sans-serif; padding: 20px; }
                 .otnotice { margin-top: 20px; }
