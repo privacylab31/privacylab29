@@ -1,9 +1,9 @@
 document.getElementById('cookies-notice-link').addEventListener('click', function(event) {
     event.preventDefault(); // Prevent the default link behavior
-    openPrivacyNotice();
+    openCookiePrivacyNotice();
 });
 
-function openPrivacyNotice() {
+function openCookiePrivacyNotice() {
     // Generate the full HTML content
     const htmlContent = `
         <!DOCTYPE html>
