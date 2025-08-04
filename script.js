@@ -19,7 +19,7 @@ function openPrivacyNotice() {
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Privacy Noticesssssss</title>
+            <title>Privacy Notice</title>
             <style>
                 body { font-family: Arial, sans-serif; padding: 20px; }
                 .otnotice { margin-top: 20px; }
@@ -102,6 +102,7 @@ function openPrivacyNotice() {
     // Close the document to finish writing and render the content
     privacyWindow.document.close();
 }
+
 
 
 
