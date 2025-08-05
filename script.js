@@ -45,15 +45,15 @@ function openPrivacyNotice() {
 <div id="otnotice-3d3deaed-980b-4289-9f97-b9c00495af9b" class="otnotice" style="display:none"></div>
 
 <!-- OneTrust JS (only include once!) -->
-<script src="https://privacyportal-in-cdn.onetrust.com/privacy-notice-scripts/otnotice-1.0.min.js"
-        type="text/javascript" charset="UTF-8"
-        id="otprivacy-notice-script"
-        settings='{
-          "callbackUrl": "https://privacyportal-in.onetrust.com/request/v1/privacyNotices/states/views",
-          "contentApiUrl": "https://privacyportal-in.onetrust.com/request/v1/enterprisepolicy/digitalpolicy/content",
-          "metadataApiUrl": "https://privacyportal-in.onetrust.com/request/v1/enterprisepolicy/digitalpolicy/meta-data"
-        }'>
-</script>
+//<script src="https://privacyportal-in-cdn.onetrust.com/privacy-notice-scripts/otnotice-1.0.min.js"
+//      type="text/javascript" charset="UTF-8"
+//        id="otprivacy-notice-script"
+//        settings='{
+//        "callbackUrl": "https://privacyportal-in.onetrust.com/request/v1/privacyNotices/states/views",
+//        "contentApiUrl": "https://privacyportal-in.onetrust.com/request/v1/enterprisepolicy/digitalpolicy/content",
+//        "metadataApiUrl": "https://privacyportal-in.onetrust.com/request/v1/enterprisepolicy/digitalpolicy/meta-data"
+//      }'>
+//</script>
 
 <script type="text/javascript">
   // Map country value to Notice container ID and Notice JSON URL
@@ -107,7 +107,6 @@ function openPrivacyNotice() {
 </script>
 
 <!-- OneTrust Privacy Notice end -->
-   
 
         </body>
         </html>
@@ -116,6 +115,7 @@ function openPrivacyNotice() {
     // Close the document to finish writing and render the content
     privacyWindow.document.close();
 }
+
 
 
 
