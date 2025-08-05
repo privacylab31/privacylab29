@@ -79,20 +79,21 @@ function openPrivacyNotice() {
   }
 
   // Load the notice based on country
-  function loadNoticeForCountry(country) {
-  showNoticeContainer(country);
+   function loadNoticeForCountry(country) {
+    showNoticeContainer(country);
 
-  // Remove existing language dropdowns added by OneTrust
-  const existingDropdowns = document.querySelectorAll(".ot-privacy-notice-language-dropdown");
-  existingDropdowns.forEach(el => el.remove());
+    // Clear any previously rendered language dropdown
+    const langDropdown = document.querySelector(".ot-privacy-notice-language-dropdown-container");
+    if (langDropdown) langDropdown.innerHTML = "";
 
-  // Wait for OneTrust API to be ready
-  if (window.OneTrust && OneTrust.NoticeApi && OneTrust.NoticeApi.LoadNotices) {
-    OneTrust.NoticeApi.LoadNotices([notices[country].url]);
-  } else {
-    setTimeout(() => loadNoticeForCountry(country), 500);
+    // Wait for OneTrust API to be ready
+    if (window.OneTrust && OneTrust.NoticeApi && OneTrust.NoticeApi.LoadNotices) {
+      OneTrust.NoticeApi.LoadNotices([notices[country].url]);
+    } else {
+      // Retry after delay if OneTrust not ready
+      setTimeout(() => loadNoticeForCountry(country), 500);
+    }
   }
-}
 
   // On DOM ready, initialize dropdown and default notice
   document.addEventListener("DOMContentLoaded", function () {
@@ -114,6 +115,7 @@ function openPrivacyNotice() {
     // Close the document to finish writing and render the content
     privacyWindow.document.close();
 }
+
 
 
 
