@@ -4,16 +4,8 @@ document.getElementById('privacy-notice-link').addEventListener('click', functio
 });
 
 function openPrivacyNotice() {
-    // Open a new window
-    const privacyWindow = window.open("", "Privacy Notice", "width=800,height=600");
 
-    if (!privacyWindow) {
-        alert("Failed to open new window. Please check your popup blocker settings.");
-        return;
-    }
-
-    // Write the necessary HTML to the new window
-    privacyWindow.document.write(`
+const htmlContent = `
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -110,16 +102,12 @@ function openPrivacyNotice() {
 
         </body>
         </html>
-    `);
+    `;
 
-    // Close the document to finish writing and render the content
-    privacyWindow.document.close();
+    // Create a Blob object representing the HTML content
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+    
+    // Create a URL for the Blob and open it in a new tab
+    const url = URL.createObjectURL(blob);
+    window.open(url, '_blank');
 }
-
-
-
-
-
-
-
-
