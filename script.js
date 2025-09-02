@@ -18,8 +18,11 @@ const htmlContent = `
             </style>
         </head>
         <body>
-      <!-- OneTrust Privacy Notice start (Merged, with Country Dropdown) -->
-<!-- Country Selection Dropdown -->
+      <!-- ✅ OneTrust Privacy Notice start (with Country Dropdown, fixed single language dropdown) -->
+    <!-- Global Language Dropdown (only once, no duplicates) -->
+    <div class="ot-privacy-notice-language-dropdown-container" style="margin: 20px 0;"></div>
+
+    <!-- Country Selection Dropdown -->
 <div style="margin-bottom:16px;">
 <label for="country-select" style="font-weight:bold;">Select Country: </label>
 <select id="country-select">
@@ -96,6 +99,7 @@ const htmlContent = `
     const url = URL.createObjectURL(blob);
     window.open(url, '_blank');
 }
+
 
 
 
