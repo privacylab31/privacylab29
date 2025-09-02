@@ -18,7 +18,7 @@ const htmlContent = `
             </style>
         </head>
         <body>
-      <!-- Privacy Notice Selector -->
+      <!-- Country Selector -->
 <div style="margin-bottom: 1rem;">
   <label for="notice-selector"><strong>Select Privacy Notice:</strong></label>
   <select id="notice-selector">
@@ -27,40 +27,51 @@ const htmlContent = `
   </select>
 </div>
 
-<!-- Privacy Notice Containers -->
+<!-- Notice Containers -->
 <div id="privacy-notice-container">
-  <!-- USA Notice -->
-  <div id="otnotice-usa" class="otnotice"></div>
+  <!-- USA Privacy Notice -->
+  <div id="otnotice-bd09463e-b148-44d4-91e5-3ee9328b729a" class="otnotice"></div>
 
-  <!-- Global Notice (hidden by default) -->
-  <div id="otnotice-global" class="otnotice" style="display:none;"></div>
+  <!-- Global Privacy Notice (hidden by default) -->
+  <div id="otnotice-54555007-d9a1-42f2-9700-2a5ca29f1434" class="otnotice" style="display:none;"></div>
 </div>
 
 <!-- OneTrust Privacy Notice Script -->
-<script src="https://privacyportal-in-cdn.onetrust.com/privacy-notice-scripts/otnotice-1.0.min.js" 
-        type="text/javascript" 
-        charset="UTF-8" 
+<script src="https://privacyportal-in-cdn.onetrust.com/privacy-notice-scripts/otnotice-1.0.min.js"
+        type="text/javascript"
+        charset="UTF-8"
         id="otprivacy-notice-script"
-        settings='{"callbackUrl":"https://privacyportal-in.onetrust.com/request/v1/privacyNotices/stats/views",
-                   "contentApiUrl":"https://privacyportal-in.onetrust.com/request/v1/enterprisePolicy/digitalpolicy/content",
-                   "metadataApiUrl":"https://privacyportal-in.onetrust.com/request/v1/enterprisePolicy/digitalpolicy/meta-data"}'>
+        settings='{
+          "callbackUrl":"https://privacyportal-in.onetrust.com/request/v1/privacyNotices/stats/views",
+          "contentApiUrl":"https://privacyportal-in.onetrust.com/request/v1/enterprisePolicy/digitalpolicy/content",
+          "metadataApiUrl":"https://privacyportal-in.onetrust.com/request/v1/enterprisePolicy/digitalpolicy/meta-data"
+        }'>
 </script>
 
 <script type="text/javascript" charset="UTF-8">
   OneTrust.NoticeApi.Initialized.then(function () {
-    // Load both notices in the background
+    // Load USA
     OneTrust.NoticeApi.LoadNotices([
-      "https://privacyportal-in-cdn.onetrust.com/storage-container/53ec83ca-0693-46f3-a55b-110c3f8f5a64/privacy-notices/bd09463e-b148-44d4-91e5-3ee9328b729a/published/privacynotice.json", // USA
-      "https://privacyportal-in-cdn.onetrust.com/storage-container/53ec83ca-0693-46f3-a55b-110c3f8f5a64/privacy-notices/54555007-d9a1-42f2-9700-2a5ca29f1434/published/privacynotice.json"  // Global
+      "https://privacyportal-in-cdn.onetrust.com/storage-container/53ec83ca-0693-46f3-a55b-110c3f8f5a64/privacy-notices/bd09463e-b148-44d4-91e5-3ee9328b729a/published/privacynotice.json"
+    ]);
+    // Load Global
+    OneTrust.NoticeApi.LoadNotices([
+      "https://privacyportal-in-cdn.onetrust.com/storage-container/53ec83ca-0693-46f3-a55b-110c3f8f5a64/privacy-notices/54555007-d9a1-42f2-9700-2a5ca29f1434/published/privacynotice.json"
     ]);
 
-    // Dropdown switch handler
+    // Dropdown handler
     document.getElementById("notice-selector").addEventListener("change", function (e) {
-      document.getElementById("otnotice-usa").style.display = (e.target.value === "usa") ? "block" : "none";
-      document.getElementById("otnotice-global").style.display = (e.target.value === "global") ? "block" : "none";
+      if (e.target.value === "usa") {
+        document.getElementById("otnotice-bd09463e-b148-44d4-91e5-3ee9328b729a").style.display = "block";
+        document.getElementById("otnotice-54555007-d9a1-42f2-9700-2a5ca29f1434").style.display = "none";
+      } else {
+        document.getElementById("otnotice-bd09463e-b148-44d4-91e5-3ee9328b729a").style.display = "none";
+        document.getElementById("otnotice-54555007-d9a1-42f2-9700-2a5ca29f1434").style.display = "block";
+      }
     });
   });
 </script>
+
 
         </body>
         </html>
@@ -73,6 +84,7 @@ const htmlContent = `
     const url = URL.createObjectURL(blob);
     window.open(url, '_blank');
 }
+
 
 
 
