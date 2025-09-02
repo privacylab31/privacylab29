@@ -64,6 +64,28 @@ const htmlContent = `
       document.getElementById(notices[key].container).style.display = key === selected ? "block" : "none";
     }
   }
+
+  // Load the correct privacy notice for the selected country
+        function loadNoticeForCountry(country) {
+            showNoticeContainer(country);
+
+            if (window.OneTrust && OneTrust.NoticeApi && OneTrust.NoticeApi.LoadNotices) {
+                OneTrust.NoticeApi.LoadNotices([notices[country].url]);
+
+                // ✅ Remove duplicate language dropdowns after load
+                setTimeout(() => {
+                    const dropdowns = document.querySelectorAll(".ot-privacy-notice-language-dropdown-container");
+                    if (dropdowns.length > 1) {
+                        dropdowns.forEach((el, idx) => {
+                            if (idx > 0) el.remove();
+                        });
+                    }
+                }, 1000); // wait for OneTrust to finish rendering
+            } else {
+                setTimeout(() => loadNoticeForCountry(country), 500);
+            }
+        }
+
  
   // Initialize and handle country switching
   function loadNoticeForCountry(country) {
@@ -99,6 +121,7 @@ const htmlContent = `
     const url = URL.createObjectURL(blob);
     window.open(url, '_blank');
 }
+
 
 
 
