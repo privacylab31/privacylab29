@@ -18,87 +18,50 @@ const htmlContent = `
             </style>
         </head>
         <body>
-      <!-- ✅ OneTrust Privacy Notice start (with Country Dropdown, fixed single language dropdown) -->
-    <!-- Global Language Dropdown (only once, no duplicates) -->
-    <div class="ot-privacy-notice-language-dropdown-container" style="margin: 20px 0;"></div>
-
-    <!-- Country Selection Dropdown -->
-<div style="margin-bottom:16px;">
-<label for="country-select" style="font-weight:bold;">Select Country: </label>
-<select id="country-select">
-<option value="usa">USA</option>
-<option value="canada">Canada</option>
-</select>
+      <!-- Privacy Notice Selector -->
+<div style="margin-bottom: 1rem;">
+  <label for="notice-selector"><strong>Select Privacy Notice:</strong></label>
+  <select id="notice-selector">
+    <option value="usa">USA</option>
+    <option value="global">Global</option>
+  </select>
 </div>
- 
-<!-- Language Drop-down for Privacy Notice (OneTrust renders this automatically) -->
-<div class="ot-privacy-notice-language-dropdown-container"></div>
- 
-<!-- Notice Containers (only one shown at a time) -->
-<div id="otnotice-54555007-d9a1-42f2-9700-2a5ca29f1434" class="otnotice"></div>
-<div id="otnotice-3d3deaed-980b-4289-9f97-b9c00495af9b" class="otnotice" style="display:none"></div>
- 
-<!-- OneTrust JS (only include once!) -->
-<script src="https://privacyportal-in-cdn.onetrust.com/privacy-notice-scripts/otnotice-1.0.min.js"
-        type="text/javascript" charset="UTF-8"
+
+<!-- Privacy Notice Containers -->
+<div id="privacy-notice-container">
+  <!-- USA Notice -->
+  <div id="otnotice-usa" class="otnotice"></div>
+
+  <!-- Global Notice (hidden by default) -->
+  <div id="otnotice-global" class="otnotice" style="display:none;"></div>
+</div>
+
+<!-- OneTrust Privacy Notice Script -->
+<script src="https://privacyportal-in-cdn.onetrust.com/privacy-notice-scripts/otnotice-1.0.min.js" 
+        type="text/javascript" 
+        charset="UTF-8" 
         id="otprivacy-notice-script"
-        settings="eyJjYWxsYmFja1VybCI6Imh0dHBzOi8vcHJpdmFjeXBvcnRhbC1pbi5vbmV0cnVzdC5jb20vcmVxdWVzdC92MS9wcml2YWN5Tm90aWNlcy9zdGF0cy92aWV3cyIsImNvbnRlbnRBcGlVcmwiOiJodHRwczovL3ByaXZhY3lwb3J0YWwtaW4ub25ldHJ1c3QuY29tL3JlcXVlc3QvdjEvZW50ZXJwcmlzZXBvbGljeS9kaWdpdGFscG9saWN5L2NvbnRlbnQiLCJtZXRhZGF0YUFwaVVybCI6Imh0dHBzOi8vcHJpdmFjeXBvcnRhbC1pbi5vbmV0cnVzdC5jb20vcmVxdWVzdC92MS9lbnRlcnByaXNlcG9saWN5L2RpZ2l0YWxwb2xpY3kvbWV0YS1kYXRhIn0=">
+        settings='{"callbackUrl":"https://privacyportal-in.onetrust.com/request/v1/privacyNotices/stats/views",
+                   "contentApiUrl":"https://privacyportal-in.onetrust.com/request/v1/enterprisePolicy/digitalpolicy/content",
+                   "metadataApiUrl":"https://privacyportal-in.onetrust.com/request/v1/enterprisePolicy/digitalpolicy/meta-data"}'>
 </script>
- 
-<script type="text/javascript">
-  // Map country value to Notice container ID and Notice JSON URL
-  const notices = {
-    usa: {
-      container: "otnotice-54555007-d9a1-42f2-9700-2a5ca29f1434",
-      url: "https://privacyportal-in-cdn.onetrust.com/storage-container/53ec83ca-0693-46f3-a55b-110c3f8f5a64/privacy-notices/54555007-d9a1-42f2-9700-2a5ca29f1434/published/privacynotice.json"
-    },
-    canada: {
-      container: "otnotice-3d3deaed-980b-4289-9f97-b9c00495af9b",
-      url: "https://privacyportal-in-cdn.onetrust.com/storage-container/53ec83ca-0693-46f3-a55b-110c3f8f5a64/privacy-notices/3d3deaed-980b-4289-9f97-b9c00495af9b/published/privacynotice.json"
-    }
-  };
- 
-  // Helper to show only the selected notice container
-  function showNoticeContainer(selected) {
-    for (const key in notices) {
-      document.getElementById(notices[key].container).style.display = key === selected ? "block" : "none";
-    }
-  }
 
-  // Load the correct privacy notice for the selected country
-        function loadNoticeForCountry(country) {
-            showNoticeContainer(country);
+<script type="text/javascript" charset="UTF-8">
+  OneTrust.NoticeApi.Initialized.then(function () {
+    // Load both notices in the background
+    OneTrust.NoticeApi.LoadNotices([
+      "https://privacyportal-in-cdn.onetrust.com/storage-container/53ec83ca-0693-46f3-a55b-110c3f8f5a64/privacy-notices/bd09463e-b148-44d4-91e5-3ee9328b729a/published/privacynotice.json", // USA
+      "https://privacyportal-in-cdn.onetrust.com/storage-container/53ec83ca-0693-46f3-a55b-110c3f8f5a64/privacy-notices/54555007-d9a1-42f2-9700-2a5ca29f1434/published/privacynotice.json"  // Global
+    ]);
 
-            if (window.OneTrust && OneTrust.NoticeApi && OneTrust.NoticeApi.LoadNotices) {
-                OneTrust.NoticeApi.LoadNotices([notices[country].url]);
-
-                // ✅ Remove duplicate language dropdowns after load
-                setTimeout(() => {
-                    const dropdowns = document.querySelectorAll(".ot-privacy-notice-language-dropdown-container");
-                    if (dropdowns.length > 1) {
-                        dropdowns.forEach((el, idx) => {
-                            if (idx > 0) el.remove();
-                        });
-                    }
-                }, 1000); // wait for OneTrust to finish rendering
-            } else {
-                setTimeout(() => loadNoticeForCountry(country), 500);
-            }
-        }
-
- 
- 
-  // On dropdown change, switch notice
-  document.addEventListener("DOMContentLoaded", function() {
-    const dropdown = document.getElementById("country-select");
-    dropdown.addEventListener("change", function() {
-      loadNoticeForCountry(this.value);
+    // Dropdown switch handler
+    document.getElementById("notice-selector").addEventListener("change", function (e) {
+      document.getElementById("otnotice-usa").style.display = (e.target.value === "usa") ? "block" : "none";
+      document.getElementById("otnotice-global").style.display = (e.target.value === "global") ? "block" : "none";
     });
-    // Load default country (USA) on first load
-    loadNoticeForCountry(dropdown.value);
   });
 </script>
-<!-- OneTrust Privacy Notice end -->
+
         </body>
         </html>
     `;
@@ -110,6 +73,7 @@ const htmlContent = `
     const url = URL.createObjectURL(blob);
     window.open(url, '_blank');
 }
+
 
 
 
