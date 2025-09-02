@@ -87,17 +87,6 @@ const htmlContent = `
         }
 
  
-  // Initialize and handle country switching
-  function loadNoticeForCountry(country) {
-    showNoticeContainer(country);
-    // Wait for OneTrust API to be ready
-    if (window.OneTrust && OneTrust.NoticeApi && OneTrust.NoticeApi.LoadNotices) {
-      OneTrust.NoticeApi.LoadNotices([notices[country].url]);
-    } else {
-      // Try again in 500ms if not ready yet
-      setTimeout(() => loadNoticeForCountry(country), 500);
-    }
-  }
  
   // On dropdown change, switch notice
   document.addEventListener("DOMContentLoaded", function() {
@@ -121,6 +110,7 @@ const htmlContent = `
     const url = URL.createObjectURL(blob);
     window.open(url, '_blank');
 }
+
 
 
 
