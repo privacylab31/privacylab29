@@ -56,27 +56,48 @@ function openPrivacyNotice() {
         }'>
 </script>
 
-<script type="text/javascript" charset="UTF-8">
-  OneTrust.NoticeApi.Initialized.then(function () {
-    // Load USA
-    OneTrust.NoticeApi.LoadNotices([
-      "https://privacyportal-in-cdn.onetrust.com/storage-container/53ec83ca-0693-46f3-a55b-110c3f8f5a64/privacy-notices/bd09463e-b148-44d4-91e5-3ee9328b729a/published/privacynotice.json"
-    ]);
-    // Load Global
-    OneTrust.NoticeApi.LoadNotices([
-      "https://privacyportal-in-cdn.onetrust.com/storage-container/53ec83ca-0693-46f3-a55b-110c3f8f5a64/privacy-notices/54555007-d9a1-42f2-9700-2a5ca29f1434/published/privacynotice.json"
-    ]);
-
-    // Dropdown handler
-    document.getElementById("notice-selector").addEventListener("change", function (e) {
-      if (e.target.value === "usa") {
-        document.getElementById("otnotice-bd09463e-b148-44d4-91e5-3ee9328b729a").style.display = "block";
-        document.getElementById("otnotice-54555007-d9a1-42f2-9700-2a5ca29f1434").style.display = "none";
-      } else {
-        document.getElementById("otnotice-bd09463e-b148-44d4-91e5-3ee9328b729a").style.display = "none";
-        document.getElementById("otnotice-54555007-d9a1-42f2-9700-2a5ca29f1434").style.display = "block";
+<script type="text/javascript">
+  // Map country value to Notice container ID and Notice JSON URL
+  const notices = {
+    usa: {
+      container: "otnotice-54555007-d9a1-42f2-9700-2a5ca29f1434",
+      url: "https://privacyportal-in-cdn.onetrust.com/storage-container/53ec83ca-0693-46f3-a55b-110c3f8f5a64/privacy-notices/54555007-d9a1-42f2-9700-2a5ca29f1434/published/privacynotice.json"
+    },
+    canada: {
+      container: "otnotice-3d3deaed-980b-4289-9f97-b9c00495af9b",
+      url: "https://privacyportal-in-cdn.onetrust.com/storage-container/53ec83ca-0693-46f3-a55b-110c3f8f5a64/privacy-notices/3d3deaed-980b-4289-9f97-b9c00495af9b/published/privacynotice.json"
+    }
+  };
+  function showNoticeContainer(selected) {
+    for (const key in notices) {
+      const containerEl = document.getElementById(notices[key].container);
+      if (containerEl) {
+        containerEl.style.display = key === selected ? "block" : "none";
       }
+    }
+  }
+   function loadNoticeForCountry(country) {
+    showNoticeContainer(country);
+
+    // Clear any previously rendered language dropdown
+    const langDropdown = document.querySelector(".ot-privacy-notice-language-dropdown-container");
+    if (langDropdown) langDropdown.innerHTML = "";
+
+    // Wait for OneTrust API to be ready
+    if (window.OneTrust && OneTrust.NoticeApi && OneTrust.NoticeApi.LoadNotices) {
+      OneTrust.NoticeApi.LoadNotices([notices[country].url]);
+    } else {
+     setTimeout(() => loadNoticeForCountry(country), 500);
+    }
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdown = document.getElementById("country-select");
+    dropdown.addEventListener("change", function () {
+      loadNoticeForCountry(this.value);
     });
+    // Load default country (USA) on first load
+    // Load default country notice (USA)
+    loadNoticeForCountry(dropdown.value);
   });
 </script>
 
@@ -88,6 +109,7 @@ function openPrivacyNotice() {
     // Close the document to finish writing and render the content
     privacyWindow.document.close();
 }
+
 
 
 
