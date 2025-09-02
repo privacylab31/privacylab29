@@ -51,7 +51,7 @@ function openPrivacyNotice() {
 </script>
  
 
-</script>
+
 <!-- OneTrust Privacy Notice end -->
 
           </body>
@@ -61,6 +61,7 @@ function openPrivacyNotice() {
     // Close the document to finish writing and render the content
     privacyWindow.document.close();
 }
+
 
 
 
