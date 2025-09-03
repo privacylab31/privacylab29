@@ -1,5 +1,3 @@
-<!-- Add this somewhere in your main page -->
-<a href="#" id="privacy-notice-link">Privacy Notice</a>
 
 <script>
 document.getElementById('privacy-notice-link').addEventListener('click', function (event) {
@@ -100,3 +98,4 @@ function openPrivacyNoticePopup() {
     popup.document.close();
 }
 </script>
+
