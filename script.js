@@ -11,7 +11,8 @@ function openPrivacyNotice() {
         return;
     }
 
-    privacyWindow.document.write(`
+    // HTML Skeleton
+    const html = `
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -24,7 +25,6 @@ function openPrivacyNotice() {
             </style>
         </head>
         <body>
-            <!-- Country Selection Dropdown -->
             <div style="margin-bottom:16px;">
                 <label for="country-select" style="font-weight:bold;">Select Country: </label>
                 <select id="country-select">
@@ -33,27 +33,11 @@ function openPrivacyNotice() {
                 </select>
             </div>
 
-            <!-- Language Dropdown rendered by OneTrust -->
             <div class="ot-privacy-notice-language-dropdown-container"></div>
-
-            <!-- Privacy Notice Containers -->
             <div id="otnotice-54555007-d9a1-42f2-9700-2a5ca29f1434" class="otnotice"></div>
             <div id="otnotice-3d3deaed-980b-4289-9f97-b9c00495af9b" class="otnotice" style="display:none;"></div>
 
-            <!-- OneTrust JS -->
-            <script 
-                src="https://privacyportal-in-cdn.onetrust.com/privacy-notice-scripts/otnotice-1.0.min.js"
-                type="text/javascript" 
-                charset="UTF-8"
-                id="otprivacy-notice-script"
-                settings='{
-                    "callbackUrl":"https://privacyportal-in.onetrust.com/request/v1/privacyNotices/stats/views",
-                    "contentApiUrl":"https://privacyportal-in.onetrust.com/request/v1/enterprisepolicy/digitalpolicy/content",
-                    "metadataApiUrl":"https://privacyportal-in.onetrust.com/request/v1/enterprisepolicy/digitalpolicy/meta-data"
-                }'>
-            </script>
-
-            <script type="text/javascript">
+            <script>
                 const notices = {
                     usa: {
                         container: "otnotice-54555007-d9a1-42f2-9700-2a5ca29f1434",
@@ -79,24 +63,37 @@ function openPrivacyNotice() {
                     }
                 }
 
-                window.addEventListener('load', function () {
-                    const script = document.getElementById("otprivacy-notice-script");
+                window.onload = function() {
+                    const dropdown = document.getElementById("country-select");
+                    dropdown.addEventListener("change", function () {
+                        loadNoticeForCountry(this.value);
+                    });
+
+                    // Dynamically load OneTrust script
+                    const script = document.createElement("script");
+                    script.src = "https://privacyportal-in-cdn.onetrust.com/privacy-notice-scripts/otnotice-1.0.min.js";
+                    script.type = "text/javascript";
+                    script.charset = "UTF-8";
+                    script.id = "otprivacy-notice-script";
+                    script.setAttribute("settings", JSON.stringify({
+                        callbackUrl: "https://privacyportal-in.onetrust.com/request/v1/privacyNotices/stats/views",
+                        contentApiUrl: "https://privacyportal-in.onetrust.com/request/v1/enterprisepolicy/digitalpolicy/content",
+                        metadataApiUrl: "https://privacyportal-in.onetrust.com/request/v1/enterprisepolicy/digitalpolicy/meta-data"
+                    }));
 
                     script.onload = function () {
-                        const dropdown = document.getElementById("country-select");
-
-                        dropdown.addEventListener("change", function () {
-                            loadNoticeForCountry(this.value);
-                        });
-
-                        // Load default notice
-                        loadNoticeForCountry(dropdown.value);
+                        loadNoticeForCountry(dropdown.value); // Load default country after script is ready
                     };
-                });
+
+                    document.body.appendChild(script);
+                };
             </script>
         </body>
         </html>
-    `);
+    `;
 
+    // Write to popup window and close the document
+    privacyWindow.document.open();
+    privacyWindow.document.write(html);
     privacyWindow.document.close();
 }
