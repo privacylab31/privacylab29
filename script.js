@@ -1,5 +1,4 @@
 
-<script>
 document.getElementById('privacy-notice-link').addEventListener('click', function (event) {
     event.preventDefault();
     openPrivacyNoticePopup();
@@ -97,5 +96,5 @@ function openPrivacyNoticePopup() {
     popup.document.write(html);
     popup.document.close();
 }
-</script>
+
 
