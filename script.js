@@ -52,6 +52,10 @@ function openPrivacyNotice() {
             canada: {
                 container: "otnotice-3d3deaed-980b-4289-9f97-b9c00495af9b",
                 url: "https://privacyportal-in-cdn.onetrust.com/storage-container/53ec83ca-0693-46f3-a55b-110c3f8f5a64/privacy-notices/3d3deaed-980b-4289-9f97-b9c00495af9b/published/privacynotice.json"
+            },
+            global: {
+                container: "otnotice-bd09463e-b148-44d4-91e5-3ee9328b729a",
+                url: "https://privacyportal-in-cdn.onetrust.com/storage-container/53ec83ca-0693-46f3-a55b-110c3f8f5a64/privacy-notices/otnotice-bd09463e-b148-44d4-91e5-3ee9328b729a/published/privacynotice.json"
             }
         };
 
@@ -104,3 +108,4 @@ function openPrivacyNotice() {
     const url = URL.createObjectURL(blob);
     window.open(url, '_blank');
 }
+
