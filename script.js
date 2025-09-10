@@ -25,6 +25,7 @@ function openPrivacyNotice() {
         <select id="country-select">
             <option value="usa">USA</option>
             <option value="canada">Canada</option>
+            <option value="canada">Global</option>
         </select>
     </div>
 
@@ -108,4 +109,5 @@ function openPrivacyNotice() {
     const url = URL.createObjectURL(blob);
     window.open(url, '_blank');
 }
+
 
