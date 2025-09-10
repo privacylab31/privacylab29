@@ -35,7 +35,7 @@ function openPrivacyNotice() {
     <!-- Notice Containers (only one shown at a time) -->
     <div id="otnotice-54555007-d9a1-42f2-9700-2a5ca29f1434" class="otnotice"></div>
     <div id="otnotice-3d3deaed-980b-4289-9f97-b9c00495af9b" class="otnotice" style="display:none"></div>
-    <div id="otnotice-bd09463e-b148-44d4-91e5-3ee9328b729a" class="otnotice" style="display:none"></div>
+    // <div id="otnotice-bd09463e-b148-44d4-91e5-3ee9328b729a" class="otnotice" style="display:none"></div>
 
     <!-- OneTrust JS (only include once!) -->
     <script src="https://privacyportal-in-cdn.onetrust.com/privacy-notice-scripts/otnotice-1.0.min.js"
@@ -110,6 +110,7 @@ function openPrivacyNotice() {
     const url = URL.createObjectURL(blob);
     window.open(url, '_blank');
 }
+
 
 
 
