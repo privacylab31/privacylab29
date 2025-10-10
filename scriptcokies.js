@@ -6,27 +6,7 @@ document.getElementById('cookies-notice-link').addEventListener('click', functio
 
 function openCookiePrivacyNotice() {
     // Full HTML content for the new tab
-    const htmlContent = `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Cookie Policy</title>
-            <style>
-                body { 
-                    font-family: Arial, sans-serif; 
-                    padding: 20px; 
-                    margin: 0;
-                    background-color: #f9f9f9;
-                }
-                h1 {
-                    color: #333;
-                }
-                .otnotice { 
-                    margin-top: 20px; 
-                }
-            </style>
+    
             <!-- OneTrust Cookie Policy Script -->
             <div id="ot-sdk-cookie-policy"></div>
             </script>
