@@ -28,15 +28,12 @@ function openCookiePrivacyNotice() {
                 }
             </style>
             <!-- OneTrust Cookie Policy Script -->
-            <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" 
-                data-domain-script="01910774-292a-731f-9870-e4edf891f6bb" charset="UTF-8"></script>
-            <script type="text/javascript">
-                function OptanonWrapper() { }
+            <div id="ot-sdk-cookie-policy"></div>
             </script>
         </head>
         <body>
             <h1>Cookie Policy</h1>
-            <div id="ot-sdk-cookie-policy"></div>
+            
         </body>
         </html>
     `;
