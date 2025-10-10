@@ -1,40 +1,51 @@
+<script>
 document.getElementById('cookies-notice-link').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent the default link behavior
+    event.preventDefault(); // Prevent default link behavior
     openCookiePrivacyNotice();
 });
 
 function openCookiePrivacyNotice() {
-    // Generate the full HTML content
+    // Full HTML content for the new tab
     const htmlContent = `
         <!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Privacy Notice</title>
+            <title>Cookie Policy</title>
             <style>
-                body { font-family: Arial, sans-serif; padding: 20px; }
-                .otnotice { margin-top: 20px; }
+                body { 
+                    font-family: Arial, sans-serif; 
+                    padding: 20px; 
+                    margin: 0;
+                    background-color: #f9f9f9;
+                }
+                h1 {
+                    color: #333;
+                }
+                .otnotice { 
+                    margin-top: 20px; 
+                }
             </style>
+            <!-- OneTrust Cookie Policy Script -->
+            <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" 
+                data-domain-script="01910774-292a-731f-9870-e4edf891f6bb" charset="UTF-8"></script>
+            <script type="text/javascript">
+                function OptanonWrapper() { }
+            </script>
         </head>
         <body>
-     
-
-  <!-- OneTrust cookies list start -->
-<div id="ot-sdk-cookie-policy"></div>
-<!-- OneTrust cookies list end -->
-
-
-
-  
+            <h1>Cookie Policy</h1>
+            <div id="ot-sdk-cookie-policy"></div>
         </body>
         </html>
     `;
 
-    // Create a Blob object representing the HTML content
+    // Create a Blob object for the HTML
     const blob = new Blob([htmlContent], { type: 'text/html' });
-    
-    // Create a URL for the Blob and open it in a new tab
+
+    // Create a URL for the Blob and open in new tab
     const url = URL.createObjectURL(blob);
     window.open(url, '_blank');
 }
+</script>
