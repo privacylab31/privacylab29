@@ -15,7 +15,6 @@ function openCookiePrivacyNotice() {
             <h1>Cookie Policy</h1>
             
         </body>
-        </html>
     `;
 
     // Create a Blob object for the HTML
