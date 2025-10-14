@@ -56,4 +56,4 @@ function openCookiePrivacyNotice() {
     const url = URL.createObjectURL(blob);
     window.open(url, '_blank');
 }
-</script>
+
