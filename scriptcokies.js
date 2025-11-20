@@ -20,9 +20,7 @@ function openCookiePrivacyNotice() {
         <body>
      
 
-<!-- OneTrust cookies list start -->
 <div id="ot-sdk-cookie-policy"></div>
-<!-- OneTrust cookies list end -->
 
   
   
