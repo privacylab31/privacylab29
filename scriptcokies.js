@@ -38,6 +38,10 @@ function openCookiePrivacyNotice() {
     </script>
 
   <!-- OneTrust Privacy Notice end -->
+
+  <!-- OneTrust cookies list start -->
+<div id="ot-sdk-cookie-policy"></div>
+<!-- OneTrust cookies list end -->
   
 
 
