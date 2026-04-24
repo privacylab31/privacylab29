@@ -62,7 +62,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 
-    <a href="javascript:Optanon.ToggleInfoDisplay();" style="color: black; text-decoration: none; cursor: pointer;"> Adjust My Preferences </a>
+                 
+<a href="#" onclick="event.preventDefault(); OneTrust.ToggleInfoDisplay();">
+  Cookie settings
+</a>
+             
+ 
     <div>
         <!-- Add Form Here -->
         <form id="user-info-form">
@@ -90,11 +95,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          </div>
          <div>
 
-<a href="#" onclick="event.preventDefault(); OneTrust.ToggleInfoDisplay();">
-  Cookie settings
+        <!-- OneTrust Cookies Settings button start -->
+<a href="javascript:Optanon.ToggleInfoDisplay();" style="color: black; text-decoration: none; cursor: pointer;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+  Your California Privacy Choices
 </a>
-             
-    </footer>
+<!-- OneTrust Cookies Settings button end -->
+
+   </footer>
     <!-- Including the additional JavaScript files -->
    <script src="script.js"></script>
 <script src="scriptcokies.js"></script>
