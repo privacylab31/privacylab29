@@ -45,9 +45,7 @@ function openPrivacyNotice() {
     // Create a Blob object representing the HTML content
     const blob = new Blob([htmlContent], { type: 'text/html' });
 
-    // Create a URL for the Blob and open it in a new tab
-    const url = URL.createObjectURL(blob);
-    window.open(url, '_blank');
+  
 }
 
 
