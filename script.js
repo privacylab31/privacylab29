@@ -42,8 +42,7 @@ function openPrivacyNotice() {
 </html>
 `;
 
-    // Create a Blob object representing the HTML content
-    const blob = new Blob([htmlContent], { type: 'text/html' });
+   
 
   
 }
